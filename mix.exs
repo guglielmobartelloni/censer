@@ -6,8 +6,10 @@ defmodule Censer.MixProject do
       app: :censer,
       version: "0.1.0",
       elixir: "~> 1.18",
+      description: "Vaporize GraphQL queries into Elixir pattern matches.",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -23,6 +25,13 @@ defmodule Censer.MixProject do
     [
       {:absinthe, "~> 1.0"},
       {:igniter, "~> 0.6", only: [:dev, :test]}
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/guglielmobartelloni/censer"}
     ]
   end
 end

@@ -1,7 +1,14 @@
 defmodule Censer.Graphql do
   alias Absinthe.Language.Field
 
-  @spec parse_and_build(String.t()) :: {any(), any()}
+  @type function_name :: atom()
+  @type pattern_ast :: Macro.t()
+
+  @doc """
+  Parses a GraphQL query and returns a tuple containing the derived
+  function name and the pattern match AST.
+  """
+  @spec parse_and_build(String.t()) :: {function_name(), pattern_ast()}
   def parse_and_build(query_string) do
     {:ok, %{input: ast}} = Absinthe.Phase.Parse.run(query_string)
 
@@ -27,7 +34,7 @@ defmodule Censer.Graphql do
 
   # Leaf Node: "email" => email
   defp build_field(%Field{name: name, selection_set: nil}) do
-    var_name = String.to_atom(name)
+    var_name = Macro.underscore(name) |> String.to_atom()
     {name, {var_name, [], nil}}
   end
 
