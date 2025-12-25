@@ -24,7 +24,8 @@ defmodule Censer.MixProject do
   defp deps do
     [
       {:absinthe, "~> 1.0"},
-      {:igniter, "~> 0.6", only: [:dev, :test]}
+      {:igniter, "~> 0.6", only: [:dev, :test]},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
