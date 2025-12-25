@@ -6,8 +6,6 @@ defmodule Mix.Tasks.Censer.Gen.Graphql.FunctionTest do
     # generate a test project
     test_project()
     # run our task
-    |> Igniter.compose_task("Censer.Gen.Graphql.Function", [])
-    # see tools in `Igniter.Test` for available assertions & helpers
-    |> assert_has_warning("mix Censer.Gen.Graphql.Function is not yet implemented")
+    |> Igniter.compose_task("censer.gen.graphql.function", [])
   end
 end

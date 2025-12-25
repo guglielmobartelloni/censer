@@ -1,6 +1,7 @@
 defmodule Censer.Graphql do
   alias Absinthe.Language.Field
 
+  @spec parse_and_build(String.t()) :: {any(), any()}
   def parse_and_build(query_string) do
     {:ok, %{input: ast}} = Absinthe.Phase.Parse.run(query_string)
 
