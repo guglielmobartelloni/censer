@@ -126,7 +126,7 @@ defmodule Mix.Tasks.Censer.Gen.Function do
         end
       end)
 
-    fallback_clause =
+    error_clause =
       quote do
         def unquote(function_name)(unexpected_args) do
           IO.inspect(unexpected_args)
@@ -134,6 +134,6 @@ defmodule Mix.Tasks.Censer.Gen.Function do
         end
       end
 
-    {function_name, {:__block__, [], clauses ++ [fallback_clause]}}
+    {function_name, {:__block__, [], clauses ++ [error_clause]}}
   end
 end
